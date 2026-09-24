@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Halden Motors | Drive it before you decide</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<header class="glass nav"><b>Halden Motors</b>
+  <nav><a href="#fleet">Fleet</a><a href="#why">Why Halden</a><a href="#" data-drive>Book a test drive</a></nav></header>
+<main>
+<section class="hero"><div id="heroCar" class="herocar" aria-hidden="true"></div>
+  <h1>Feel the road before you sign.</h1>
+  <p>Four cars, one honest showroom. Compare models, plan your monthly payment, book a 45-minute test drive, or lock in your build with a refundable $500 pre-order.</p>
+  <div class="row"><button class="btn" data-drive>Book a test drive</button><a class="btn ghost" href="#fleet">See the fleet</a></div>
+  <div class="glass stats"><div><b>4.9/5</b>customer rating</div><div><b>7 days</b>full deposit refund</div><div><b>45 min</b>test drives</div></div>
+</section>
+<section id="fleet"><h2>The fleet</h2><p class="t">30 models from 16 brands. Prices and specs are approximate list figures for this demo project.</p>
+  <div class="bar"><input id="q" placeholder="Search a model" aria-label="Search"><select id="sort" aria-label="Sort">
+    <option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option><option value="hp-desc">Most powerful</option><option value="rangeKm-desc">Longest range</option></select></div>
+  <div class="tabs" id="tabs"></div><div class="tabs brands" id="brands"></div><div class="grid" id="grid"></div></section>
+<section id="why"><h2>Why Halden</h2>
+  <div class="grid three">
+    <div class="glass card"><h3>Transparent pricing</h3><p>The price you see is the price you pay. No hidden dealer fees.</p></div>
+    <div class="glass card"><h3>Refundable deposit</h3><p>Change your mind within 7 days and get the full $500 back.</p></div>
+    <div class="glass card"><h3>Test drive at your pace</h3><p>Pick your car, date and time. Taken slots are blocked instantly.</p></div>
+  </div></section>
+</main>
+<footer>© 2026 Halden Motors. A skill-based learning project. <a href="admin.html">Staff</a></footer>
+<div id="cmpbar" class="glass"><span id="cmpn"></span><button class="btn" id="cmpgo">Compare</button><button class="btn ghost" id="cmpx">Clear</button></div>
+
+<dialog id="detail" class="glass wide"></dialog>
+<dialog id="cmpdlg" class="glass wide"></dialog>
+<dialog id="dlg" class="glass"><form id="form">
+  <h3>Book a test drive</h3>
+  <label>Full name<input name="name" required></label>
+  <label>Email<input name="email" type="email" required></label>
+  <label>Phone<input name="phone" type="tel" required></label>
+  <label>Car<select name="carId" id="carSel"></select></label>
+  <div class="two"><label>Date<input name="date" type="date" id="date" required></label>
+  <label>Time<select name="time" id="time"></select></label></div>
+  <p id="msg" role="alert"></p>
+  <div class="row"><button class="btn">Confirm booking</button><button type="button" class="btn ghost" data-close>Cancel</button></div>
+</form></dialog>
+<div id="toast" class="glass" role="status"></div>
+<script src="app.js"></script>
+</body></html>

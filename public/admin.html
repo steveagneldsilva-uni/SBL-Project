@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Halden staff</title>
+<link rel="stylesheet" href="style.css"></head><body><div class="orb o1"></div>
+<main><section><h2>Staff dashboard</h2>
+<div class="glass card" style="max-width:420px"><label>Admin key<input type="password" id="k"></label><button class="btn" id="go">Load data</button><p id="e" style="color:#ff9aa5"></p></div>
+<div id="out"></div></section></main>
+<script>
+const $=s=>document.querySelector(s);
+const tbl=(t,rows,cols)=>`<h3 style="margin-top:28px">${t} (${rows.length})</h3><div class="glass card scroll"><table><tr>${cols.map(c=>`<th>${c}</th>`).join("")}</tr>${rows.map(r=>`<tr>${cols.map(c=>`<td>${r[c]??""}</td>`).join("")}</tr>`).join("")}</table></div>`;
+$("#go").onclick=async()=>{const r=await fetch("/api/admin",{headers:{"x-admin-key":$("#k").value}});const d=await r.json();
+if(!r.ok){$("#e").textContent=d.error;return}$("#e").textContent="";
+const rev=d.orders.reduce((s,o)=>s+o.amount,0);
+$("#out").innerHTML=`<div class="glass stats"><div><b>${d.bookings.length}</b>test drives</div><div><b>${d.orders.length}</b>pre-orders</div><div><b>$${rev}</b>deposits</div></div>`+tbl("Test drives",d.bookings,["ref","name","email","phone","carId","date","time"])+tbl("Pre-orders",d.orders,["ref","carId","color","email","amount","at"]);};
+</script></body></html>
